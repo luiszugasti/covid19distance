@@ -26,7 +26,7 @@ function initMap() {
             for (var i = 0; i < results.length; i++) {
                 createMarker(results[i]);
             }
-
+            
             map.setCenter(results[0].geometry.location);
         }
     });
@@ -39,7 +39,12 @@ function createMarker(place) {
     });
 
     google.maps.event.addListener(marker, 'click', function () {
-        infowindow.setContent(place.name);
+        var contentString = '<button onClick="checkIn(\'' + place.name + '\')" />Check In</button>';
+        infowindow.setContent(contentString);
         infowindow.open(map, this);
     });
+}
+
+function checkIn(name){
+    console.log(name);
 }
