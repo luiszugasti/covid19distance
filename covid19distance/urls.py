@@ -18,5 +18,6 @@ from django.urls import path
 from map import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index,name='index')
+    path('',views.index,name='index'),
+    path('testmap/', views.testmap, name='test_map')
 ]
