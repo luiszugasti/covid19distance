@@ -1,7 +1,8 @@
 import googlemaps
 import time
+# from django.core.management.base import BaseCommand, CommandError
 
-from map.models import Location
+# from map.models import Location
 
 
 def merge_two_dicts(x, y):
@@ -10,12 +11,14 @@ def merge_two_dicts(x, y):
     return z
 
 
+# class Command(BaseCommand):
 # create the gmaps object
 key = 'AIzaSyAa9kNiGDlJqiOk9iudMkoEOpND4ZKcsFI'
 gmaps = googlemaps.Client(key)
 # let toronto = {lat: 43.6598154, lng: -79.4618357};
 location = (43.6598154, -79.4618357)
-type_list = ["park", "restaurants", "libraries", "transit"]  # hard coded
+type_list = ["park", "meal_takeaway", "library", "transit_station"]  #
+# hard coded
 # for now
 language = "en-US"
 region = "CA"
@@ -57,11 +60,11 @@ for i in range(0, 10):
 
 print("yay")
 # TODO write to database
-for item in totals:
-    temp = Location(
-        location_name=item["name"],
-        location_access_day='Monday',
-        location_access_time=2,
-        location_population=10,
-    )
-    temp.save()
+# for item in totals:
+#     temp = Location(
+#         location_name=item["name"],
+#         location_access_day='Monday',
+#         location_access_time=2,
+#         location_population=10,
+#     )
+#     temp.save()
