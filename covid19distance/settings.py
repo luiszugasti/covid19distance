@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'covid19distance.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'ruhacks2020',
-        'HOST': 'mongodb+srv://admin:<admin>@ruhacks2020-1esb7.gcp.mongodb.net'
-                '/test?retryWrites=true&w=majority',
-        'USER': '<admin>',
-        'PASSWORD': '<admin>',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
