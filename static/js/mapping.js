@@ -87,8 +87,16 @@ function setMapOnAll(map) {
       markers[i].setMap(map);
     }
   }
+  
+document.getElementById("id_location_name").style.visibility = 'hidden';
+document.getElementById("id_location_access_day").style.visibility = 'hidden';
+document.getElementById("id_location_access_time").style.visibility = 'hidden';
 function checkIn(name){
-    //show form
+    let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    let now = new Date();
+    document.getElementById("id_location_name").value = name;
+    document.getElementById("id_location_access_day").value = days[now.getDay()];
+    document.getElementById("id_location_access_time").value = now.getHours();
     console.log(name);
 }
 
