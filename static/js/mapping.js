@@ -64,6 +64,8 @@ function createMarkers(places) {
             position: place.geometry.location
         });
 
+        let infowindow = new google.maps.InfoWindow();
+
         google.maps.event.addListener(marker, 'click', function () {
             let contentString = '<button onClick="checkIn(\'' + place.name + '\')" />Check In</button>';
             infowindow.setContent(contentString);
