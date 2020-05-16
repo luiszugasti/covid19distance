@@ -15,12 +15,14 @@ def index(request):
             new_form = locationForm()
             return render(request,'./covid19distance/index.html',{
                 'locationform':new_form,
-                'locations':locations
-            })
-        else:
-            form = locationForm();
-            return render(request, './covid19distance/index.html',{
                 'locations':locations,
-                'locationform':form
+                'send_status':'valid'
             })
+    else:
+        form = locationForm();
+        return render(request, './covid19distance/index.html',{
+            'locations':locations,
+            'locationform':form,
+            'send_status':'invalid'
+        })
 
