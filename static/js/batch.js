@@ -88,8 +88,8 @@ function setMapOnAll(map) {
     }
   }
 function checkIn(name){
-    //show form
-    console.log(name);
+    let nname = name.replace(/'/g, "\\'");
+    console.log(nname);
 }
 
 function changeMarkers(location) {
