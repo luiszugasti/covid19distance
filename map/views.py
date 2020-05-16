@@ -4,15 +4,7 @@ from .forms import locationForm
 
 
 def index(request):
-    form = locationForm();
     locations = Location.objects.all()
-    return render(request, './covid19distance/index.html', {
-        'locations': locations,
-        'locationForm': form
-    })
-
-
-def submit(request):
     if request.method == 'POST':
         form = locationForm(request.POST)
         if form.is_valid():
@@ -20,15 +12,17 @@ def submit(request):
             location_access_day1 = form.cleaned_data['location_access_day']
             location_access_time1 = form.cleaned_data['location_access_time']
             location_population1 = form.cleaned_data['location_population']
-            locationObj = Location(location_name='location_name1', location_access_day='Monday',
-                                   location_access_time='20:12:12', location_population='123')
+            locationObj = Location(location_name = location_name1, location_access_day = location_access_day1,location_access_time = location_access_time1,location_population = location_population1)
             locationObj.save(force_insert=True)
             new_form = locationForm()
-            return render(request, './covid19distance/submit.html', {
-                'locationform': new_form
+            return render(request,'./covid19distance/index.html',{
+                'locationform':new_form,
+                'locations':locations
             })
-    else:
-        form = locationForm()
-        return render(request, './covid19distance/submit.html', {
-            'locationform': form
-        })
+        else:
+            form = locationForm();
+            return render(request, './covid19distance/index.html',{
+                'locations':locations,
+                'locationform':form
+            })
+
