@@ -64,11 +64,20 @@ function createMarkers(places) {
             position: place.geometry.location
         });
 
+        google.maps.event.addListener(marker, 'click', function () {
+            let contentString = '<button onClick="checkIn(\'' + place.name + '\')" />Check In</button>';
+            infowindow.setContent(contentString);
+            infowindow.open(map, this);
+        });
         let li = document.createElement('li');
-        li.textContent = place.name;
+        li.textContent = place.name + '<button onClick="checkIn(\'' + place.name + '\')" />Check In</button>';
         placesList.appendChild(li);
 
         bounds.extend(place.geometry.location);
     }
     map.fitBounds(bounds);
+}
+
+function checkIn(name){
+    console.log(name);
 }
