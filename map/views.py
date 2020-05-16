@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Location
 from .forms import locationForm
+
+
 def index(request):
     locations = Location.objects.all()
     if request.method == 'POST':
