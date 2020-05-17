@@ -58,7 +58,8 @@ function createMarkers(places) {
 
         google.maps.event.addListener(markers[i], 'click', function () {
             
-            let contentString = place.name+ location_json[place.name]+"<br>" +
+            let contentString = place.name+ "<br>" +
+            "Current Popuation:"+location_json[place.name]+"<br>" +
             '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
             infowindow.setContent(contentString);
             infowindow.open(map, this);
@@ -73,9 +74,19 @@ function createMarkers(places) {
 }
 function addMarker(place){
     let markerList = ['./static/images/green.png','./static/images/blue.png','./static/images/yellow.png','./static/images/red.png'];
+    let markerColor;
+    if(location_json[place.name]<=5){
+        markerColor=markerList[0];
+    }else if(location_json[place.name]<=10){
+        markerColor=markerList[1];
+    }else if(location_json[place.name]<=25){
+        markerColor=markerList[2];
+    }else{
+        markerColor=markerList[3];
+    }
     let image = {
         // testing out the marker setups
-        url: markerList[parseInt(Math.random()*4)],
+        url: markerColor,
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
