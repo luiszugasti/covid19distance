@@ -53,7 +53,9 @@ function createMarkers(places) {
         let infowindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(markers[i], 'click', function () {
-            let contentString = '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
+            
+            let contentString = place.name+
+            '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
             infowindow.setContent(contentString);
             infowindow.open(map, this);
         });
@@ -66,13 +68,14 @@ function createMarkers(places) {
     map.fitBounds(bounds);
 }
 function addMarker(place){
+    let markerList = ['./static/images/green.png','./static/images/blue.png','./static/images/yellow.png','./static/images/red.png'];
     let image = {
         // testing out the marker setups
-        url: "https://i.pinimg.com/736x/d7/b2/13/d7b21331ffcae6093e15699e413bf90b.jpg",
+        url: markerList[parseInt(Math.random()*4)],
         size: new google.maps.Size(100, 100),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
+        scaledSize: new google.maps.Size(30, 55)
     };
     let marker = new google.maps.Marker({
         map: map,
@@ -87,17 +90,19 @@ function setMapOnAll(map) {
       markers[i].setMap(map);
     }
   }
-  
+
 document.getElementById("id_location_name").style.visibility = 'hidden';
 document.getElementById("id_location_access_day").style.visibility = 'hidden';
 document.getElementById("id_location_access_time").style.visibility = 'hidden';
+document.getElementById("id_location_type").style.visibility = 'hidden';
+
 function checkIn(name){
     let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     let now = new Date();
     document.getElementById("id_location_name").value = name;
     document.getElementById("id_location_access_day").value = days[now.getDay()];
     document.getElementById("id_location_access_time").value = now.getHours();
-    console.log(name);
+    document.getElementById("id_location_type").value = queryLocation;
 }
 
 function changeMarkers(location) {
