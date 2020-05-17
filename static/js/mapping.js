@@ -54,7 +54,7 @@ function createMarkers(places) {
 
         google.maps.event.addListener(markers[i], 'click', function () {
             
-            let contentString = place.name+
+            let contentString = place.name+ "<br>" +
             '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
             infowindow.setContent(contentString);
             infowindow.open(map, this);

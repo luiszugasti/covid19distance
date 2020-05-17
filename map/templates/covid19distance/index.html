@@ -47,7 +47,7 @@
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">🗼 6ix-feet-apart</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
             data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        </span>
     </button>
 </nav>
 
@@ -59,13 +59,15 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
                             <span data-feather="home"></span>
-                            Map <span class="sr-only">(current)</span>
+                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                 </ul>
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Categories</span>
+                <h6 class="sidebar-heading d-flex
+                justify-content-between
+                align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span><h3>Categories</h3></span>
                     <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
                         <span data-feather="plus-circle"></span>
                     </a>
@@ -73,26 +75,26 @@
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="changeMarkers('park')">
-                            <span data-feather="file-text"></span>
-                            Parks
+                            <span data-feather="file-text"></span><h4>
+                            Parks</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="changeMarkers('meal_takeaway')">
-                            <span data-feather="file-text"></span>
-                            Restaurants
+                            <span data-feather="file-text"></span><h4>
+                            Restaurants</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="changeMarkers('library')">
-                            <span data-feather="file-text"></span>
-                            Libraries
+                            <span data-feather="file-text"></span><h4>
+                            Libraries</h4>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="changeMarkers('transit_station')">
-                            <span data-feather="file-text"></span>
-                            Transit
+                            <span data-feather="file-text"></span><h4>
+                            Transit</h4>
                         </a>
                     </li>
                 </ul>
@@ -101,9 +103,9 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Map</h1>
+                <h1 class="h2">COVID-19 Distancing Map</h1>
             </div>
-            <div id="map"></div>
+            <div id="map"><p></p></div>
 
             <form action="{% url 'index'%}" method="POST">
                 {% csrf_token %}
