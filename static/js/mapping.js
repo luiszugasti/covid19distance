@@ -120,7 +120,7 @@ document.getElementById("id_location_name").style.visibility = 'hidden';
 document.getElementById("id_location_access_day").style.visibility = 'hidden';
 document.getElementById("id_location_access_time").style.visibility = 'hidden';
 document.getElementById("id_location_type").style.visibility = 'hidden';
-
+document.getElementById("id_location_population").placeholder = "Observed Population";
 function checkIn(name){
     let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     let now = new Date();

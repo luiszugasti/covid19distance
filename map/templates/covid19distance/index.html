@@ -106,22 +106,24 @@
                 <h1 class="h2">COVID-19 Distancing Map</h1>
             </div>
             <div id="map"><p></p></div>
-
             <hr/>
- <form action="{% url 'index'%}" method="POST">
+            <div style="display:flex;" >
+            <img src="{%static './images/Legend2.png'%}" style="width: 100px;"></img>
+            <form action="{% url 'index'%}" method="POST">
 
                 {% csrf_token %}
                 {{locationform}}
                 <input type="submit" name="submit">
             </form>
 
-            <div style="display:flex;" >
+            
 
 
                 <p>Last submission:  </p><p style="color:green;
 ">{{send_status}}</p>
-            </div>
+            
             <button id="more">Load more locations</button>
+        </div>
             <div id = "hidden" style="visibility: hidden;">
             {
             {% for x in locations %}
