@@ -6,3 +6,4 @@ class Location(models.Model):
     location_access_day = models.CharField(max_length=9)
     location_access_time = models.IntegerField()
     location_population = models.IntegerField(null=True)
+    location_type = models.CharField(max_length=20)
