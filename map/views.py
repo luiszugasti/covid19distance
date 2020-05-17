@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import Location
 from .forms import locationForm
-
+import json
+from django.http import HttpResponse
+from django.core import serializers
 
 def index(request):
     locations = Location.objects.all()
@@ -28,3 +30,8 @@ def index(request):
             'send_status':'invalid'
         })
 
+def park(request):
+    dump = serializers.serialize('json', Location.objects.filter(location_type='park'))
+#name of park and color
+    data = json.dumps(dump)
+    return HttpResponse(data, content_type='application/json')
