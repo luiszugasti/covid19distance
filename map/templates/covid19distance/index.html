@@ -38,6 +38,23 @@
             height: 500px;
             width: 100%;
         }
+        button,input[type="submit"]{
+            height: 30px;
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        button:hover,input[type="submit"]:hover{
+            background-color: #555555;
+            color: white;
+        }
     </style>
     <!-- Custom styles for this template -->
 
@@ -108,23 +125,18 @@
             <div id="map"><p></p></div>
             <hr/>
             <div style="display:flex;" >
-            <img src="{%static './images/Legend2.png'%}" style="width: 100px;"></img>
-            <form action="{% url 'index'%}" method="POST">
-
-                {% csrf_token %}
-                {{locationform}}
-                <input type="submit" name="submit">
-            </form>
-
-            
-
-
-                <p>Last submission:  </p><p style="color:green;
-">{{send_status}}</p>
-            
-            <button id="more">Load more locations</button>
-        </div>
-            <div id = "hidden" style="visibility: hidden;">
+                <img src="{%static './images/Legend2.png'%}" style="width: 100px;"></img>
+                <form action="{% url 'index'%}" method="POST">
+                    {% csrf_token %}
+                    {{locationform}}
+                    <input type="submit" name="submit">
+                </form>
+                
+                <button id="more">Load more locations</button>
+                
+            </div>
+            <p>Last submission: {{send_status}}</p>
+        <div id = "hidden" style="visibility: hidden;">
             {
             {% for x in locations %}
                 {% if x %}

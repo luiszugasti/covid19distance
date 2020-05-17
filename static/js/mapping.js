@@ -73,7 +73,7 @@ function createMarkers(places) {
     map.fitBounds(bounds);
 }
 function addMarker(place){
-    let markerList = ['./static/images/green.png','./static/images/blue.png','./static/images/yellow.png','./static/images/red.png'];
+    let markerList = ['./static/images/blue.png','./static/images/green.png','./static/images/yellow.png','./static/images/red.png'];
     let markerColor;
     if(location_json[place.name]<=5){
         markerColor=markerList[0];
@@ -128,6 +128,7 @@ function checkIn(name){
     document.getElementById("id_location_access_day").value = days[now.getDay()];
     document.getElementById("id_location_access_time").value = now.getHours();
     document.getElementById("id_location_type").value = queryLocation;
+    alert("Checked In! Now please enter the location population and submit.");
 }
 
 function changeMarkers(location) {
