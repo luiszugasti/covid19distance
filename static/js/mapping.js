@@ -59,9 +59,7 @@ function createMarkers(places) {
             infowindow.setContent(contentString);
             infowindow.open(map, this);
         });
-        let li = document.createElement('li');
-        li.textContent = place.name;
-        placesList.appendChild(li);
+
 
         bounds.extend(place.geometry.location);
     }
