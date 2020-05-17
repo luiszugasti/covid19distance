@@ -1,7 +1,10 @@
 import googlemaps
 import time
 
-from map.models import Location
+
+# from django.core.management.base import BaseCommand, CommandError
+
+# from map.models import Location
 
 
 def merge_two_dicts(x, y):
@@ -10,21 +13,24 @@ def merge_two_dicts(x, y):
     return z
 
 
+# class Command(BaseCommand):
 # create the gmaps object
 key = 'AIzaSyAa9kNiGDlJqiOk9iudMkoEOpND4ZKcsFI'
 gmaps = googlemaps.Client(key)
 # let toronto = {lat: 43.6598154, lng: -79.4618357};
 location = (43.6598154, -79.4618357)
-type_list = ["park", "restaurants", "libraries", "transit"]  # hard coded
+# type, search query
+type_list = [("park", "park"), ("meal_takeaway", "restaurant"), ("library", "library"), ("transit_station", "transit")]
+# hard coded
 # for now
 language = "en-US"
 region = "CA"
 radius = 2000
 
-for sample_type in type_list:
+for sample_type, sample_search in type_list:
     # get the initial placement...
     test = gmaps.places(
-        sample_type,
+        sample_search,
         location=location,
         radius=radius,
         # region=region,
@@ -42,7 +48,7 @@ totals = test['results']
 for i in range(0, 10):
     time.sleep(5)
     test = gmaps.places(
-        sample_type,
+        sample_search,
         location=location,
         radius=radius,
         language=language,
@@ -57,11 +63,11 @@ for i in range(0, 10):
 
 print("yay")
 # TODO write to database
-for item in totals:
-    temp = Location(
-        location_name=item["name"],
-        location_access_day='Monday',
-        location_access_time=2,
-        location_population=10,
-    )
-    temp.save()
+# for item in totals:
+#     temp = Location(
+#         location_name=item["name"],
+#         location_access_day='Monday',
+#         location_access_time=2,
+#         location_population=10,
+#     )
+#     temp.save()

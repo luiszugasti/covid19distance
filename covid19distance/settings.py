@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from urllib.parse import quote_plus
+import dns
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,11 +77,13 @@ WSGI_APPLICATION = 'covid19distance.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'ruhacks2020',
-        'HOST': 'mongodb+srv://admin:<admin>@ruhacks2020-1esb7.gcp.mongodb.net'
-                '/test?retryWrites=true&w=majority',
-        'USER': '<admin>',
-        'PASSWORD': '<admin>',
+        'NAME': 'ru',
+        'CLIENT': {
+            'host': "mongodb+srv://admin:" + quote_plus(
+                'admin') +
+                    "@ruhacks2020-1esb7.gcp.mongodb.net/test?retryWrites=true&w"
+                    "=majority"
+        },
     }
 }
 

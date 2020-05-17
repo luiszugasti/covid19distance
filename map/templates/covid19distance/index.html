@@ -104,11 +104,13 @@
                 <h1 class="h2">Map</h1>
             </div>
             <div id="map"></div>
+
             <form action="{% url 'index'%}" method="POST">
                 {% csrf_token %}
                 {{locationform}}
-                <input type="submit" value="submit">
+                <input type="submit" name="submit">
             </form>
+            {{send_status}}
             <div id="right-panel">
                 <h2>Results</h2>
                 <ul id="places"></ul>
