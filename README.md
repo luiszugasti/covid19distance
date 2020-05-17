@@ -8,20 +8,21 @@ Enabling people to safely distance while outside, as a community effort.
 ## What it does
 
 Social Distancing is hard, and usually made more difficult by busy parks,
-restaurants, and more.  
-Our application makes these situations of _busyness_ a part of the past, 
-by allowing people to collectively record how many
+restaurants, and more. Our application makes these situations of _busyness_
+a thing of the past, by allowing people to collectively record how many
 other people they see near them.  
+
 Then, others can view a real-time heatmap and make decisions as to what
-place is the safest to go to.  
-This is especially crucial in times like these, where people may have
-to go outside and have an opportunity to limit contact with the virus.
+place is the safest to go to. This is especially crucial in times like
+these, where people may have to go outside and have an opportunity to 
+limit contact with the virus.
 
 ## How we built it
 
 We built the project using a Django back-end. We connected the backend to MongoDB
 atlas using their free tier. For our front-end, we used Bootstrap to arrange our
 map and relevant data for users.
+
 To obtain map data and query in real time, we used Google's Map APIs hosted on
 a cloud instance, using a free tier. We used the places API as well as the 
 JavaScript API.
