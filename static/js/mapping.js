@@ -60,7 +60,7 @@ function createMarkers(places) {
             infowindow.open(map, this);
         });
         let li = document.createElement('li');
-        li.textContent = place.name + '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
+        li.textContent = place.name;
         placesList.appendChild(li);
 
         bounds.extend(place.geometry.location);
@@ -72,7 +72,7 @@ function addMarker(place){
     let image = {
         // testing out the marker setups
         url: markerList[parseInt(Math.random()*4)],
-        size: new google.maps.Size(100, 100),
+        size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(30, 55)
