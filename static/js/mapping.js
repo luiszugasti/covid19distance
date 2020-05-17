@@ -10,7 +10,11 @@ let textSearchCall = "https://maps.googleapis.com/maps/api/place/textsearch/"
 let apiToken = "AIzaSyAa9kNiGDlJqiOk9iudMkoEOpND4ZKcsFI"
 let queryLocation = 'park';
 const apiString = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=park&key=AIzaSyCYNyE9kaiI_NaNfAuVpdJh9M5igP5yeTE&location=43.7184038,-79.5181406&radius=2000&type=park"
-
+let location_data = document.getElementById('hidden').innerHTML;
+let new_location_data = location_data.substring(0,location_data.length-54);
+new_location_data+='}';
+let location_json = JSON.parse(new_location_data);
+console.log(location_json);
 function initMap() {
     // Create the map.
     //43.6598154,-79.4618357
@@ -54,7 +58,7 @@ function createMarkers(places) {
 
         google.maps.event.addListener(markers[i], 'click', function () {
             
-            let contentString = place.name+ "<br>" +
+            let contentString = place.name+ location_json[place.name]+"<br>" +
             '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
             infowindow.setContent(contentString);
             infowindow.open(map, this);

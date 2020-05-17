@@ -122,8 +122,15 @@
 ">{{send_status}}</p>
             </div>
             <button id="more">Load more locations</button>
-
-
+            <div id = "hidden" style="visibility: hidden;">
+            {
+            {% for x in locations %}
+                {% if x %}
+                "{{x.location_name}}":{{x.location_population}},
+                {% endif %}
+            {% endfor %}
+            }
+        </div>
         </main>
     </div>
 </div>
