@@ -24,7 +24,7 @@
             text-anchor: middle;
             -webkit-user-select: none;
             -moz-user-select: none;
-            -ms-user-select: none;
+            -ms-user-select: nonef;
             user-select: none;
         }
 
@@ -108,13 +108,22 @@
             <div id="map"><p></p></div>
 
             <hr/>
-            <form action="{% url 'index'%}" method="POST">
+ <form action="{% url 'index'%}" method="POST">
+
                 {% csrf_token %}
                 {{locationform}}
                 <input type="submit" name="submit">
             </form>
-            {{send_status}}
+
+            <div style="display:flex;" >
+
+
+                <p>Last submission:  </p><p style="color:green;
+">{{send_status}}</p>
+            </div>
             <button id="more">Load more locations</button>
+
+
         </main>
     </div>
 </div>
