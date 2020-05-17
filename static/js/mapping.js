@@ -54,13 +54,15 @@ function createMarkers(places) {
 
         google.maps.event.addListener(markers[i], 'click', function () {
             
-            let contentString = place.name+
+            let contentString = place.name+'<br>'+
             '<button onClick="checkIn(\'' + place.name.replace(/'/g, "\\'") + '\')" />Check In</button>';
             infowindow.setContent(contentString);
             infowindow.open(map, this);
         });
 
 
+
+          
         bounds.extend(place.geometry.location);
     }
     map.fitBounds(bounds);
@@ -79,9 +81,19 @@ function addMarker(place){
         map: map,
         icon: image,
         title: place.name,
-        position: place.geometry.location
+        position: place.geometry.location,
     });
     markers.push(marker);
+    var cityCircle = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: place.geometry.location,
+        radius: 1000
+      });
 }
 function setMapOnAll(map) {
     for (var i = 0; i < markers.length; i++) {
